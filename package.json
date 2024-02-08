@@ -6,12 +6,11 @@
     "build": "ng build",
     "test": "npx jest --silent",
     "lint": "eslint --fix ./projects/resilient-http-client/src",
-    "release": "standard-version",
     "prettier:check": "prettier --check './projects/resilient-http-client/src'",
     "prettier:write": "prettier --write './projects/resilient-http-client/src'",
-    "doc": "yarn doc:changelog && yarn doc:changelog:copy && yarn run doc:compodoc && yarn run copyDoc",
-    "doc:compodoc": "compodoc --includes ./docs-src -p ./projects/resilient-http-client/tsconfig.lib.json -n resilient-http-client -d doc/code --hideGenerator --unitTestCoverage ./doc/test/coverage/coverage-summary.json --disableCoverage",
-    "copyDoc": "copyfiles -a './doc/**/*.*' ./dist/resilient-http-client/assets",
+    "doc": "yarn run doc:compodoc && yarn run copyDoc",
+    "doc:compodoc": "compodoc -p ./projects/resilient-http-client/tsconfig.lib.json -n resilient-http-client -d doc/code --hideGenerator --unitTestCoverage ./doc/test/coverage/coverage-summary.json --disableCoverage",
+    "copyDoc": "copyfiles -a './doc/**/*.*' ./dist/resilient-http-client/",
     "copyNpmrc": "copyfiles './.npmrc' ./dist/resilient-http-client/"
   },
   "repository": {
@@ -21,11 +20,6 @@
   "bugs": {
     "url": "https://github.com/tobiasbrenner/resilient-http-service/issues",
     "email": "tobias.brenner1981@gmail.com"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   },
   "license": "MIT",
   "private": false,

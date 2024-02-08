@@ -115,6 +115,15 @@ export class SampleApiService {
 }
 ```
 
+### The code documentation
+Take a look at the code documentation by opening the index.html file.
+- Folder: <code>/doc/code</code>
+
+### Test coverage report
+Take a look at the test coverage by opening the index.html file.
+- Folder: <code>/doc/test</code>
+
+
 **Love the Resilience Client? Give our repo a star :star: :arrow_up:.**
 
 [default-config]: ./projects/resilient-http-client/src/lib/util/rx/resilience.rx-operator.config.ts

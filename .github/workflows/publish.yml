@@ -30,4 +30,7 @@ jobs:
           yarn run copyNpmrc
       - name: Publish
         working-directory: ./dist/resilient-http-client
-        run: npm publish
+        run: |
+          yarn run test
+          yarn run doc
+          npm publish
