@@ -1,7 +1,7 @@
 name: Publish to NPM
 on:
   workflow_run:
-    workflows: [build-lint-test]
+    workflows: [BuildLintTestWorkflow]
     types: [completed]
   push:
     branches:
