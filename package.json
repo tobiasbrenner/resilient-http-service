@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "commit": "cz",
     "build": "ng build",
     "test": "npx jest --silent",
     "lint": "eslint --fix ./projects/resilient-http-client/src",
@@ -12,8 +11,6 @@
     "prettier:write": "prettier --write './projects/resilient-http-client/src'",
     "doc": "yarn doc:changelog && yarn doc:changelog:copy && yarn run doc:compodoc && yarn run copyDoc",
     "doc:compodoc": "compodoc --includes ./docs-src -p ./projects/resilient-http-client/tsconfig.lib.json -n resilient-http-client -d doc/code --hideGenerator --unitTestCoverage ./doc/test/coverage/coverage-summary.json --disableCoverage",
-    "doc:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
-    "doc:changelog:copy": "copyfiles './CHANGELOG.md' ./dist/resilient-http-client/assets",
     "copyDoc": "copyfiles -a './doc/**/*.*' ./dist/resilient-http-client/assets",
     "copyNpmrc": "copyfiles './.npmrc' ./dist/resilient-http-client/"
   },
@@ -54,16 +51,13 @@
     "@angular-eslint/template-parser": "17.2.1",
     "@angular/cli": "^17.0.9",
     "@angular/compiler-cli": "^17.0.0",
-    "@commitlint/cli": "18.6.0",
-    "@commitlint/config-conventional": "18.6.0",
+    "@changesets/cli": "2.27.1",
     "@compodoc/compodoc": "1.1.23",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "29.5.12",
     "@types/uuid": "9.0.8",
     "@typescript-eslint/eslint-plugin": "6.20.0",
     "@typescript-eslint/parser": "6.20.0",
-    "commitizen": "4.3.0",
-    "conventional-changelog-cli": "4.1.0",
     "copyfiles": "2.4.1",
     "core-js": "3.35.1",
     "eslint": "8.56.0",
@@ -79,7 +73,6 @@
     "jest-preset-angular": "14.0.0",
     "ng-packagr": "^17.1.0",
     "prettier": "3.2.4",
-    "standard-version": "9.5.0",
     "typescript": "~5.2.2",
     "uuid": "^9.0.1"
   }
