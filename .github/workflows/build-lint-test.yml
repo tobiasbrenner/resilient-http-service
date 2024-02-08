@@ -13,20 +13,20 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Use Node.js 20.10.0
       uses: actions/setup-node@v3
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 20.10.0
         cache: "yarn"
-    - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-    - run: yarn install --frozen-lockfile --check-files
-    - run: yarn run build --if-present
-    - run: yarn run test
-    - run: yarn run lint
+    - name: Add npm token
+      run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile --check-files
+    - name: Build
+      run: yarn run build
+    - name: Test
+      run: yarn run test
+    - name: Lint
+      run: yarn run lint

@@ -51,7 +51,6 @@
     "@angular-eslint/template-parser": "17.2.1",
     "@angular/cli": "^17.0.9",
     "@angular/compiler-cli": "^17.0.0",
-    "@changesets/cli": "2.27.1",
     "@compodoc/compodoc": "1.1.23",
     "@types/jasmine": "~5.1.0",
     "@types/jest": "29.5.12",
