@@ -1,5 +1,5 @@
 {
-  "name": "resilient-http-client",
+  "name": "@tobias_brenner/resilient-http-client",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
