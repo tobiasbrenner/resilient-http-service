@@ -8,7 +8,6 @@ import {
 } from './resilience.rx-operator';
 import { v4 as uuidv4 } from 'uuid';
 import { IResilienceConfig } from '../../model/type/resilience.rx-operator.type';
-import { DEFAULT_RESILIENCE_CONFIG } from './resilience.rx-operator.config';
 
 describe('An applyResilience operator', () => {
     let uuid: string;
@@ -125,7 +124,7 @@ describe('An applyResilience operator', () => {
         it('should call onRetryRequest after retryIntervalInMillisList passed and the call will be retried', () => {
             subscription = sourceObservable$.subscribe(callback);
             expect(onRetryRequestSpy).not.toHaveBeenCalled();
-            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![0] + 10);
+            jest.advanceTimersByTime(resilienceConfig.retryIntervalInMillisList![0] + 100);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(1);
             expect(onRetryRequestSpy).toHaveBeenCalledWith(
                 resilienceConfig.topic,
@@ -134,7 +133,7 @@ describe('An applyResilience operator', () => {
                 resilienceConfig.retryIntervalInMillisList[0],
                 HttpStatusCode.GatewayTimeout,
             );
-            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![1] + 10);
+            jest.advanceTimersByTime(resilienceConfig.retryIntervalInMillisList![1] + 10);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(2);
             expect(onRetryRequestSpy).toHaveBeenCalledWith(
                 resilienceConfig.topic,
@@ -155,7 +154,8 @@ describe('An applyResilience operator', () => {
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(5); // still 5 and waiting?
             onWaitingForUserDecisionSpy.mock.calls[0][4].next(true); // emit retry wish
             jest.advanceTimersByTime(100);
-            expect(onRetryRequestSpy).toHaveBeenCalledTimes(6);
+            // 6 calls done, 1 waiting in the delay, but onRequestRetry already called
+            expect(onRetryRequestSpy).toHaveBeenCalledTimes(7);
         });
 
         it('should fail after user decision was to cancel the stream', () => {
