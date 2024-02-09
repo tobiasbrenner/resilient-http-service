@@ -50,8 +50,13 @@ export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
     retryIntervalInMillisList: [0, 200, 500, 1000, 1000],
     /* The possibility to:
         - override boolean flags (waitForUserDecision, disableRetry, logResult, trace) and
-        - hook up specific event listeners for onFailMessage and onFailResponse
-        for a specific topic. Recommendation is to use a string enum for all topics in your app. */
+        - specify a custom failMessage (recommendation is to use a localization key here)
+          and specify a topic specific failover response value. Hint: this can also be used for Regarding Topics: mocking 
+          responses of not yet implemented backend endpoints in dev state.
+          Regarding Topics: Recommendation is to use a string enum for all topics in your app.
+          You can use them also to switch case custom visualization when handling the events centrally for example
+          in an SnackbarService which consumes all events from the resillience service.
+   */
     topicToConfigDict: {},
     /* Event listener callback for onWaitingForUserDecision event. Will be called if retry loop failed
         and waitForUserDecision flag was true globally or for the regarding topic, configured

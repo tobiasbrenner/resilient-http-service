@@ -2,8 +2,8 @@ import { HttpStatusCode } from '@angular/common/http';
 import { Subject } from 'rxjs';
 
 export interface ITopicConfig {
-    onFailMessage?: string;
-    onFailResponse?: unknown;
+    failMessage?: string;
+    failoverResponse?: unknown;
     waitForUserDecision?: boolean;
     disableRetry?: boolean;
     logResult?: boolean;

@@ -28,7 +28,7 @@ export const applyResilience = <T>(config: IResilienceConfig, uuid: string): Mon
             of(error).pipe(
                 concatMap((err) => {
                     if (isRetryDisabled(config) || !config.retryOnStatusCodeList.includes(err.status)) {
-                        const topicSpecificMessageOrEmpty = config.topicToConfigDict[config.topic]?.onFailMessage || '';
+                        const topicSpecificMessageOrEmpty = config.topicToConfigDict[config.topic]?.failMessage || '';
 
                         config.onFail(config.topic, uuid, topicSpecificMessageOrEmpty);
                         throw err;
@@ -74,7 +74,7 @@ export const applyResilience = <T>(config: IResilienceConfig, uuid: string): Mon
                                         return of(err);
                                     }
                                     const topicSpecificMessageOrEmpty =
-                                        config.topicToConfigDict[config.topic]?.onFailMessage || '';
+                                        config.topicToConfigDict[config.topic]?.failMessage || '';
 
                                     config.onFail(config.topic, uuid, topicSpecificMessageOrEmpty);
                                     throw err;
@@ -82,7 +82,7 @@ export const applyResilience = <T>(config: IResilienceConfig, uuid: string): Mon
                             );
                         } else {
                             const topicSpecificMessageOrEmpty =
-                                config.topicToConfigDict[config.topic]?.onFailMessage || '';
+                                config.topicToConfigDict[config.topic]?.failMessage || '';
 
                             config.onFail(config.topic, uuid, topicSpecificMessageOrEmpty);
                             throw err;

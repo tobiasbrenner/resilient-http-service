@@ -25,6 +25,7 @@ jobs:
         run: |
           yarn run build
           yarn run copyNpmrc
+          yarn run copyReleaseNotes
           yarn run test
           yarn run doc
       - name: Publish

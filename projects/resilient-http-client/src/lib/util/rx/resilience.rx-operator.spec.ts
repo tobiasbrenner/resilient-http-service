@@ -172,7 +172,7 @@ describe('An applyResilience operator', () => {
             resilienceConfig.waitForUserDecision = true;
             resilienceConfig.topicToConfigDict = {
                 TEST: {
-                    onFailMessage: 'custom fail message',
+                    failMessage: 'custom fail message',
                 },
             };
             subscription = sourceObservable$.subscribe(callback);
@@ -200,7 +200,7 @@ describe('An applyResilience operator', () => {
         it('should call onFail with custom message if it retried as much as specified and failed and waitForUserDecision was false', () => {
             resilienceConfig.topicToConfigDict = {
                 TEST: {
-                    onFailMessage: 'custom fail message',
+                    failMessage: 'custom fail message',
                 },
             };
             subscription = sourceObservable$.subscribe(callback);
@@ -288,7 +288,7 @@ describe('An applyResilience operator', () => {
         it('should return the override specified by topic config', () => {
             resilienceConfig.topicToConfigDict = {
                 TEST: {
-                    onFailMessage: '',
+                    failMessage: '',
                     waitForUserDecision: true,
                     disableRetry: true,
                     logResult: true,
@@ -307,7 +307,7 @@ describe('An applyResilience operator', () => {
         it('should return the override specified by topic config', () => {
             resilienceConfig.topicToConfigDict = {
                 TEST: {
-                    onFailMessage: '',
+                    failMessage: '',
                     waitForUserDecision: true,
                     disableRetry: true,
                     logResult: true,
@@ -326,7 +326,7 @@ describe('An applyResilience operator', () => {
         it('should return the override specified by topic config', () => {
             resilienceConfig.topicToConfigDict = {
                 TEST: {
-                    onFailMessage: '',
+                    failMessage: '',
                     waitForUserDecision: true,
                     disableRetry: true,
                     logResult: true,

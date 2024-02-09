@@ -46,8 +46,8 @@ export class ResilientHttpClientService {
                     const topicRelatedConfig = finalConfig.topicToConfigDict[finalConfig.topic];
 
                     if (topicRelatedConfig) {
-                        if (topicRelatedConfig.onFailResponse) {
-                            return of(topicRelatedConfig.onFailResponse as T);
+                        if (topicRelatedConfig.failoverResponse) {
+                            return of(topicRelatedConfig.failoverResponse as T);
                         }
                     }
                     return throwError(() => err);

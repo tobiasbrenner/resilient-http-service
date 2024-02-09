@@ -210,7 +210,7 @@ describe('A ResilientHttpClientService', () => {
 
             baseConfig.topicToConfigDict = {
                 JEST_JUNIT_TEST: {
-                    onFailResponse: FAIL_OVER_RESULT,
+                    failoverResponse: FAIL_OVER_RESULT,
                 },
             };
             httpClientMock.setFailOnNextRequest({
@@ -236,7 +236,7 @@ describe('A ResilientHttpClientService', () => {
 
             baseConfig.topicToConfigDict = {
                 JEST_JUNIT_TEST: {
-                    onFailMessage: CUSTOM_ON_FAIL_MSG,
+                    failMessage: CUSTOM_ON_FAIL_MSG,
                 },
             };
             httpClientMock.setFailOnNextRequest({
