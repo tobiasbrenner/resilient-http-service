@@ -38,7 +38,6 @@ export const applyResilience = <T>(config: IResilienceConfig, uuid: string): Mon
 
                     if (retryCount <= config.retryIntervalInMillisList.length) {
                         return of(err).pipe(
-                            delay(config.retryIntervalInMillisList[retryCount - 1]),
                             tap(() =>
                                 config.onRequestRetry(
                                     config.topic,
@@ -48,6 +47,7 @@ export const applyResilience = <T>(config: IResilienceConfig, uuid: string): Mon
                                     err.status,
                                 ),
                             ),
+                            delay(config.retryIntervalInMillisList[retryCount - 1]),
                         );
                     } else {
                         retryCount = 0;

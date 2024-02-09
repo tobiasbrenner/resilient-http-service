@@ -2,7 +2,7 @@ import { IResilienceConfig } from '../../model/type/resilience.rx-operator.type'
 import { HttpStatusCode } from '@angular/common/http';
 
 export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
-    isDelayedAfterMs: 5000,
+    isDelayedAfterMs: 3000,
     disableRetry: false,
     logResult: false,
     trace: false,
@@ -16,7 +16,7 @@ export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
         HttpStatusCode.ServiceUnavailable,
         HttpStatusCode.GatewayTimeout,
     ],
-    retryIntervalInMillisList: [0, 500, 1000, 10000, 20000],
+    retryIntervalInMillisList: [0, 200, 500, 1000, 1000],
     topicToConfigDict: {},
     onWaitingForUserDecision: (): void => {},
     onFail: (): void => {},
