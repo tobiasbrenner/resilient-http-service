@@ -1,6 +1,6 @@
 {
   "name": "@tobias_brenner/resilient-http-client",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "scripts": {
     "ng": "ng",
     "build": "ng build",

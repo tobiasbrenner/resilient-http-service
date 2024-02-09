@@ -15,7 +15,7 @@ The [default config][default-config] is the following:
 export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
     /* the ms after which a request is reported via call
         to onRequestDelayed fn that it is delayed*/
-    isDelayedAfterMs: 5000,
+    isDelayedAfterMs: 3000,
     /* flag to enable/disable the whole resilience behaviour */
     disableRetry: false,
     /* flag to enable/disable automatic log output for the response payload */
@@ -42,12 +42,12 @@ export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
     ],
     /* Default retry interval list in milliseconds. This list means: if the initial request fails and
         it was a status code from the retryOnStatusCodeList list, retry immediately, then after waiting for
-        500 if it still failed, and then after additional 1000 again, etc. until there is no more ms in the array.
+        200 if it still failed, and then after additional 500 again, etc. until there is no more ms in the array.
         The retry loop will stop after looping through the retryIntervalInMillisList array.
         If waitForUserDecision was false, it will then throw an expection and close the stream.
         In this case, if configured via topicToConfigDict, a fallback response will be returned or it will just throw.
     */
-    retryIntervalInMillisList: [0, 500, 1000, 10000, 20000],
+    retryIntervalInMillisList: [0, 200, 500, 1000, 1000],
     /* The possibility to:
         - override boolean flags (waitForUserDecision, disableRetry, logResult, trace) and
         - hook up specific event listeners for onFailMessage and onFailResponse
