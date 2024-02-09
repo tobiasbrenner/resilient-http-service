@@ -8,6 +8,7 @@ import {
 } from './resilience.rx-operator';
 import { v4 as uuidv4 } from 'uuid';
 import { IResilienceConfig } from '../../model/type/resilience.rx-operator.type';
+import { DEFAULT_RESILIENCE_CONFIG } from './resilience.rx-operator.config';
 
 describe('An applyResilience operator', () => {
     let uuid: string;
@@ -124,7 +125,7 @@ describe('An applyResilience operator', () => {
         it('should call onRetryRequest after retryIntervalInMillisList passed and the call will be retried', () => {
             subscription = sourceObservable$.subscribe(callback);
             expect(onRetryRequestSpy).not.toHaveBeenCalled();
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![0] + 10);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(1);
             expect(onRetryRequestSpy).toHaveBeenCalledWith(
                 resilienceConfig.topic,
@@ -133,7 +134,7 @@ describe('An applyResilience operator', () => {
                 resilienceConfig.retryIntervalInMillisList[0],
                 HttpStatusCode.GatewayTimeout,
             );
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![1] + 10);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(2);
             expect(onRetryRequestSpy).toHaveBeenCalledWith(
                 resilienceConfig.topic,

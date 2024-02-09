@@ -3,6 +3,7 @@ import { HttpClientMock } from '../mock/httpclient.mock';
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { IResilienceConfig } from '../model/type/resilience.rx-operator.type';
+import { DEFAULT_RESILIENCE_CONFIG } from '../util/rx/resilience.rx-operator.config';
 
 describe('A ResilientHttpClientService', () => {
     const DELAYED_AFTER_MS = 5000;
@@ -279,15 +280,17 @@ describe('A ResilientHttpClientService', () => {
                 { status: HttpStatusCode.RequestTimeout },
             ]);
             subscription = instance.get(TEST_URL, baseConfig).subscribe(callback);
-            jest.advanceTimersByTime(10);
-            expect(onRetryRequestSpy).toHaveBeenCalledTimes(1);
-            jest.advanceTimersByTime(500);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![0] + 10);
+            // changed behaviour of onRequestRetry logic. Event will be triggered before retry call and will inform about when the next call will be done
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(2);
-            jest.advanceTimersByTime(1000);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![1] + 10);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(3);
-            jest.advanceTimersByTime(10000);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![2] + 10);
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(4);
-            jest.advanceTimersByTime(20000);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![3] + 10);
+            expect(onRetryRequestSpy).toHaveBeenCalledTimes(5);
+            jest.advanceTimersByTime(DEFAULT_RESILIENCE_CONFIG.retryIntervalInMillisList![4] + 10);
+            // no next retry call, so counter stays at 5
             expect(onRetryRequestSpy).toHaveBeenCalledTimes(5);
             expect(errorSpy).toHaveBeenCalled();
         });
