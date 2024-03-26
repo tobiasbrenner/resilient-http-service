@@ -14,4 +14,10 @@ its readme is updated as well.
 
 Sorry for the inconvenience.
 
+## 2.0.1 Release
+Update dependencies to fix high vulnerabilities caused by webpack-dev-middleware sub dependency.
+
+New Angular version: 17.3.1
+
+
 [topicConfig]: projects/resilient-http-client/src/lib/model/type/resilience.rx-operator.type.ts
