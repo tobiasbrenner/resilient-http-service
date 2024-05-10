@@ -9,7 +9,6 @@ export const DEFAULT_RESILIENCE_CONFIG: Partial<IResilienceConfig> = {
     waitForUserDecision: false,
     retryOnStatusCodeList: [
         HttpStatusCode.RequestTimeout,
-        HttpStatusCode.Locked,
         HttpStatusCode.TooManyRequests,
         HttpStatusCode.InternalServerError,
         HttpStatusCode.BadGateway,

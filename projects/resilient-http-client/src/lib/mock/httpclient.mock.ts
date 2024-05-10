@@ -54,8 +54,7 @@ export class HttpClientMock {
 
     public get<T>(
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        url,
+        url: string,
         options?: {
             headers?:
                 | HttpHeaders

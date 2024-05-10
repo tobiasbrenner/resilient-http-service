@@ -19,5 +19,8 @@ Update dependencies to fix high vulnerabilities caused by webpack-dev-middleware
 
 New Angular version: 17.3.1
 
+## 2.0.2 Release
+- Update dependencies to fix high vulnerabilities 
+- Remove HttpStatusCode.Locked from default retryOnStatusCodeList
 
 [topicConfig]: projects/resilient-http-client/src/lib/model/type/resilience.rx-operator.type.ts
