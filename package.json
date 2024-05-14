@@ -1,6 +1,6 @@
 {
   "name": "@tobias_brenner/resilient-http-client",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "scripts": {
     "ng": "ng",
     "build": "ng build",
@@ -22,6 +22,7 @@
     "url": "https://github.com/tobiasbrenner/resilient-http-service/issues",
     "email": "tobias.brenner1981@gmail.com"
   },
+  "keywords": ["resilience", "http", "Angular", "HttpClient", "retry"],
   "license": "MIT",
   "private": false,
   "dependencies": {

@@ -23,4 +23,7 @@ New Angular version: 17.3.1
 - Update dependencies to fix high vulnerabilities 
 - Remove HttpStatusCode.Locked from default retryOnStatusCodeList
 
+## 2.0.3 Release
+Just update package.json keywords for better search results
+
 [topicConfig]: projects/resilient-http-client/src/lib/model/type/resilience.rx-operator.type.ts
