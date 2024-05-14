@@ -26,4 +26,7 @@ New Angular version: 17.3.1
 ## 2.0.3 Release
 Just update package.json keywords for better search results
 
+## 2.0.4 Release
+Update missing keywords to artefact package.json (doh!)
+
 [topicConfig]: projects/resilient-http-client/src/lib/model/type/resilience.rx-operator.type.ts
