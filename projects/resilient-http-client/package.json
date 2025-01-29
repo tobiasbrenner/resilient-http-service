@@ -1,19 +1,19 @@
 {
   "name": "resilient-http-client",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "peerDependencies": {
-    "@angular/common": "^17.3.1",
-    "@angular/core": "^17.3.1",
-    "uuid": "^9.0.1"
+    "@angular/common": "^19.1.2",
+    "@angular/core": "^19.1.2",
+    "uuid": "^10.0.0"
   },
   "dependencies": {
-    "tslib": "^2.6.2"
+    "tslib": "^2.8.1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tobiasbrenner/resilient-http-service.git"
   },
-  "keywords": ["resilience", "http", "Angular", "HttpClient", "retry"],
+  "keywords": ["resilient-http-client", "resilience", "http", "Angular", "HttpClient", "retry"],
   "bugs": {
     "url": "https://github.com/tobiasbrenner/resilient-http-service/issues",
     "email": "tobias.brenner1981@gmail.com"

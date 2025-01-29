@@ -29,4 +29,7 @@ Just update package.json keywords for better search results
 ## 2.0.4 Release
 Update missing keywords to artefact package.json (doh!)
 
+## 2.0.5 Release
+Update dependencies. Change to Angular 19.1.2
+
 [topicConfig]: projects/resilient-http-client/src/lib/model/type/resilience.rx-operator.type.ts

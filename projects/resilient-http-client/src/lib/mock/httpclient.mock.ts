@@ -2,11 +2,9 @@ import { delay, Observable, of, throwError } from 'rxjs';
 import { HttpContext, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
 
 export class HttpClientMock {
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     private nextResultList: any[];
     private nextDelayList: number[];
     private failOnNextGetRequestList: Array<{
-        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         error?: any;
         headers?: HttpHeaders;
         status?: number;
@@ -25,12 +23,10 @@ export class HttpClientMock {
         this.failOnNextGetRequestList = [];
     }
 
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     public setNextResult(result: any): void {
         this.nextResultList = [result];
     }
 
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     public setNextResultList(resultList: any[]): void {
         this.nextResultList = resultList;
     }
@@ -47,13 +43,11 @@ export class HttpClientMock {
         this.nextResultList = [];
     }
 
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
     public pushNextResult(result: any): void {
         this.nextResultList.push(result);
     }
 
     public get<T>(
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         url: string,
         options?: {
             headers?:
@@ -90,7 +84,6 @@ export class HttpClientMock {
 
     public setFailOnNextRequest(
         config: {
-            // eslint-disable-next-line  @typescript-eslint/no-explicit-any
             error?: any;
             headers?: HttpHeaders;
             status?: number;
@@ -104,7 +97,6 @@ export class HttpClientMock {
 
     public setFailOnNextRequestList(
         configList: Array<{
-            // eslint-disable-next-line  @typescript-eslint/no-explicit-any
             error?: any;
             headers?: HttpHeaders;
             status?: number;
